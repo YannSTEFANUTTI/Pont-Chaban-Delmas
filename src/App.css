@@ -1,10 +1,24 @@
+@font-face {
+  font-family: CenturyGothic;
+  src: url(./assets/font/CenturyGothic.ttf);
+}
+
+@font-face {
+  font-family: gothicb;
+  src: url(./assets/font/gothicb.ttf);
+}
+
+* {
+  font-family: CenturyGothic, "Roboto", "sans-serif";
+}
+
 body {
   margin: 0;
   padding: 0;
   width: 100vw;
   box-sizing: border-box;
-   height: 100vh;
-   background-attachment: fixed;
+  height: 100vh;
+  background-attachment: fixed;
   background-size: 300% 300%;
   background-image: linear-gradient(
     -45deg,
@@ -32,55 +46,41 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-
-}
-
-@font-face {
-  font-family: CenturyGothic;
-  src: url(./assets/font/CenturyGothic.ttf);
-}
-
-@font-face {
-  font-family: gothicb;
-  src: url(./assets/font/gothicb.ttf);
-}
-
-* {
-  font-family: CenturyGothic, "Roboto", "sans-serif";
 }
 
 #fullCard {
   scale: 1;
   rotate: 0deg;
   height: auto;
-  width:20vw;
-  
+  width: 50vw;
   background-color: rgb(229, 229, 229);
-  border-radius: 30px;
+  border-radius: 5px;
   box-shadow: 1vh 2vh 5vh rgb(105, 105, 105);
 }
 
 #projetID {
-  font-size: 0.6vw;
+  font-size:1vw;
   color: rgb(128, 3, 3);
   margin: 0;
-  margin-top: 5%;
+  padding-top: 5%;
   font-family: gothicb, "Roboto", "sans-serif";
   text-align: left;
-  letter-spacing: -0.04rem;
+  letter-spacing: -0.04vw;
 }
 
 #fullCard h4 {
-  font-size: 0.7vw;
+  font-size: 1vw;
   color: rgb(50, 50, 50);
   margin: 0;
-  margin-top: 8%;
+  margin-top: 2%;
   font-family: gothicb, "Roboto", "sans-serif";
   text-align: left;
   padding-left: 10%;
+  padding-right: 10%;
 }
+
 #fullCard p {
-  font-size: 0.55vw;
+  font-size: 0.8vw;
   margin: 0;
   padding-left: 10%;
   padding-right: 10%;
@@ -89,11 +89,38 @@ body {
   height: 100%;
 }
 
-
-
 .allCards {
-
 }
+
+/*-------------------COUNTER---------------------*/
+
+.countdown-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 -8px 0 -8px;
+}
+
+.time-section {
+  padding: 0.2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: #343434;
+}
+
+.time {
+  margin: 0;
+  font-size: 1vw;
+  font-weight: 800;
+}
+
+.time-text {
+  padding-bottom: 20%;
+  font-size: 0.8vw;
+}
+
+/*--------------------------TITLEBAR-------------------------*/
 
 .titleBar {
   position: relative;
@@ -162,5 +189,3 @@ body {
   text-decoration: none;
   color: rgb(50, 50, 50);
 }
-
-
