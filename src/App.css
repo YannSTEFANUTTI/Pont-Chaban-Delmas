@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  box-sizing: border-box;
+   height: 100vh;
+   background-attachment: fixed;
+  background-size: 300% 300%;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(59, 173, 227, 1) 0%,
+    rgba(87, 111, 230, 1) 25%,
+    rgb(219, 161, 60) 51%,
+    rgb(255, 255, 255) 100%
+  );
+  animation: AnimateBG 20s ease infinite;
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.App {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+}
+
+@font-face {
+  font-family: CenturyGothic;
+  src: url(./assets/font/CenturyGothic.ttf);
+}
+
+@font-face {
+  font-family: gothicb;
+  src: url(./assets/font/gothicb.ttf);
+}
+
+* {
+  font-family: CenturyGothic, "Roboto", "sans-serif";
+}
+
+#fullCard {
+  scale: 1;
+  rotate: 0deg;
+  height: auto;
+  width:20vw;
+  
+  background-color: rgb(229, 229, 229);
+  border-radius: 30px;
+  box-shadow: 1vh 2vh 5vh rgb(105, 105, 105);
+}
+
+#projetID {
+  font-size: 0.6vw;
+  color: rgb(128, 3, 3);
+  margin: 0;
+  margin-top: 5%;
+  font-family: gothicb, "Roboto", "sans-serif";
+  text-align: left;
+  letter-spacing: -0.04rem;
+}
+
+#fullCard h4 {
+  font-size: 0.7vw;
+  color: rgb(50, 50, 50);
+  margin: 0;
+  margin-top: 8%;
+  font-family: gothicb, "Roboto", "sans-serif";
+  text-align: left;
+  padding-left: 10%;
+}
+#fullCard p {
+  font-size: 0.55vw;
+  margin: 0;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: left;
+  line-height: normal;
+  height: 100%;
+}
+
+
+
+.allCards {
+
+}
+
+.titleBar {
+  position: relative;
+  top: 0;
+  width: 20%;
+  height: 20%;
+  background-color: rgb(235, 235, 235);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 1vh 2vh 5vh rgb(141, 141, 141);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.titleBar h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: 1.5vh;
+}
+
+.titleBar p {
+  font-size: 100%;
+  margin-top: 0;
+  color: rgb(128, 3, 3);
+  font-family: gothicb, "Roboto", "sans-serif";
+  text-align: center;
+}
+
+.titleBar img {
+  width: 7%;
+  margin-top: 1.5vh;
+  filter: sepia(20%);
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1vw;
+}
+
+.titleBar a:link {
+  text-decoration: none;
+  color: rgb(50, 50, 50);
+}
+
+.titleBar a:visited {
+  text-decoration: none;
+  color: rgb(50, 50, 50);
+}
+
+.titleBar a:hover {
+  text-decoration: none;
+  color: rgb(134, 5, 5);
+  scale: 1.1;
+}
+
+.titleBar a:active {
+  text-decoration: none;
+  color: rgb(50, 50, 50);
+}
+
+
