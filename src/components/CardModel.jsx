@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect, useState } from "react";
 import Countdown from "./Countdown";
 
 const CardModel = ({ id, date, openHour, closeHour, reason}) => {
