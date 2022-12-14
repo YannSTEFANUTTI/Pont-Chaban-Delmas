@@ -62,7 +62,7 @@ body {
   scale: 1;
   rotate: 0deg;
   height: auto;
-  width: 50vw;
+  width: 30vw;
   background-color: rgb(229, 229, 229, 0.9);
   border-radius: 5px;
   box-shadow: 1vh 2vh 5vh rgb(105, 105, 105);
@@ -99,6 +99,8 @@ body {
   line-height: normal;
   height: 100%;
 }
+
+#ouverture{padding-bottom: 5%;}
 
 .allCards {position: relative; top: 30vh; z-index: 1;
 }
@@ -208,4 +210,6 @@ body {
   justify-content: center;
   text-align: center;
   padding-bottom: 3vh;
+  padding-left: 3vh;
+  padding-right: 3vh;
 }

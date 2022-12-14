@@ -7,9 +7,10 @@ import TitleBar from "./components/TitleBar";
 function App() {
   const [selectReason, setSelectReason] = useState("");
   const [selectDate, setSelectDate] = useState("");
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState();
+  const [allDatesAfterCurrentDay, setAllDatesAfterCurrentDay] = useState([]);
   const apiURL =
-    "https://opendata.bordeaux-metropole.fr/api/records/1.0/search/?dataset=previsions_pont_chaban&q=&rows=10000&sort=date_passage";
+    "https://opendata.bordeaux-metropole.fr/api/records/1.0/search/?dataset=previsions_pont_chaban&q=&rows=10000&sort-=date_passage";
 
   useEffect(() => {
     const url = `${apiURL}`;
@@ -18,21 +19,40 @@ function App() {
     });
   }, []);
 
+  const currentDate = new Date();
+  const dateFormated = `${currentDate.getFullYear()}-0${
+    currentDate.getMonth()-5
+  }-${currentDate.getDate()}`;
+
+/*   const time = new Date().getTime() ;
+  console.log("time = " + time);
+ */
+  useEffect(() => {
+    if (datas) {
+      setAllDatesAfterCurrentDay(
+        datas.records
+          .map((el) => el.fields.date_passage)
+          .filter((el) => el >= dateFormated)
+      );
+    }
+  }, [datas]);
+
+
   return (
     <div className="App">
       <TitleBar
         setSelectReason={setSelectReason}
         setSelectDate={setSelectDate}
+        allDatesAfterCurrentDay={allDatesAfterCurrentDay}
       />
       <div className="allCards">
-        {datas.records &&
+        {datas &&
           datas.records
-
+            .filter((el) => el.fields.date_passage >= dateFormated)
             .filter((el) => !selectReason || el.fields.bateau === selectReason)
             .filter(
               (el) => !selectDate || el.fields.date_passage === selectDate
             )
-
             .map((el) => (
               <CardModel
                 id={el.recordid}
@@ -40,6 +60,8 @@ function App() {
                 date={el.fields.date_passage}
                 openHour={el.fields.re_ouverture_a_la_circulation}
                 closeHour={el.fields.fermeture_a_la_circulation}
+                selectDate={selectDate}
+                dateFormated={dateFormated}
               />
             ))}
       </div>

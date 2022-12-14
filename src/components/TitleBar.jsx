@@ -1,10 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import CountdownTitle from './CountdownTitle';
 
 
-const TitleBar = ({ selectReason, setSelectReason, setSelectDate }) => {
-  const [reasonFilter, setReasonFilter] = useState([]);
+const TitleBar = ({
+  setSelectReason,
+  setSelectDate,
+  allDatesAfterCurrentDay,
+}) => {
   const [datas, setDatas] = useState([]);
   const apiURL =
     "https://opendata.bordeaux-metropole.fr/api/records/1.0/search/?dataset=previsions_pont_chaban&q=&rows=10000&sort=date_passage";
@@ -25,14 +29,17 @@ const TitleBar = ({ selectReason, setSelectReason, setSelectDate }) => {
   const allReasons = datas.map((el) => el.fields.bateau).sort();
   const allReasonsOnce = Array.from(new Set(allReasons));
 
-  const allDates = datas.map((el) => el.fields.date_passage).sort();
+  const allDates = allDatesAfterCurrentDay
+    .map((el) => el)
+    .sort();
+    
   const allDatesOnce = Array.from(new Set(allDates));
 
   return (
     <div className="titleBar">
-      <div className="logos">
+      {/*  <div className="logos">
         <img src="src/assets/img/logo03.png" alt="Github" />
-      </div>
+      </div> */}
       <a
         href="src/assets/img/YannStefanutti.pdf"
         target="_blank"
@@ -41,6 +48,10 @@ const TitleBar = ({ selectReason, setSelectReason, setSelectDate }) => {
         <h1>Pont Chaban Delmas</h1>
         <p>Dates de fermetures</p>
       </a>
+      <CountdownTitle
+        setSelectDate={setSelectDate}
+        allDatesAfterCurrentDay={allDatesAfterCurrentDay}
+      />
       <form id="formFilter">
         <label>
           Filtrer par Bateau ou événement <br />

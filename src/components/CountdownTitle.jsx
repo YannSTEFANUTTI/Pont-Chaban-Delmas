@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-const Countdown = ({ date }) => {
-  const [countdownDate, setCountdownDate] = useState(new Date(date).getTime());
+const CountdownTitle = ({ date, allDatesAfterCurrentDay }) => {
+  const [countdownDate, setCountdownDate] = useState(new Date().getTime());
   const [state, setState] = useState({
     days: 0,
     hours: 0,
@@ -9,27 +9,37 @@ const Countdown = ({ date }) => {
     seconds: 0,
   });
 
-  useEffect(() => setCountdownDate(new Date(date).getTime()), [date]);
-  
+
+
   useEffect(() => {
     setInterval(() => setNewTime(), 1000);
-  }, [countdownDate]);
+  }, []);
 
- 
+useEffect(() => {
+  setCountdownDate(Number(new Date(allDatesAfterCurrentDay[0]).getTime()))
+}, [allDatesAfterCurrentDay]);
+
+
+/*   useEffect(
+    () => setCountdownDate(Number(new Date(allDatesAfterCurrentDay[0]).getTime()),
+    [allDatesAfterCurrentDay[0]])
+  ); */
+  
+  const closestDate = Number(new Date(allDatesAfterCurrentDay[0]));
+  console.log(countdownDate);
+
   const setNewTime = () => {
     if (countdownDate) {
       const currentTime = new Date().getTime();
-
-      const distanceToDate = countdownDate - currentTime;  // *0.981 = CHANGEMENT DE DATE POUR LE TEST
+      const distanceToDate = countdownDate - currentTime;
 
       let days = Math.floor(distanceToDate / (1000 * 60 * 60 * 24));
       let hours = Math.floor(
         (distanceToDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        let minutes = Math.floor(
-          (distanceToDate % (1000 * 60 * 60)) / (1000 * 60)
-          );
-       
+      );
+      let minutes = Math.floor(
+        (distanceToDate % (1000 * 60 * 60)) / (1000 * 60)
+      );
       let seconds = Math.floor((distanceToDate % (1000 * 60)) / 1000);
 
       const numbersToAddZeroTo = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -46,6 +56,7 @@ const Countdown = ({ date }) => {
       setState({ days: days, hours: hours, minutes, seconds });
     }
   };
+
   return (
     <div>
       <div className="countdown-wrapper">
@@ -79,4 +90,4 @@ const Countdown = ({ date }) => {
   );
 };
 
-export default Countdown;
+export default CountdownTitle;
