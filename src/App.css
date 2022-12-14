@@ -63,6 +63,7 @@ body {
   rotate: 0deg;
   height: auto;
   width: 30vw;
+  min-width: 400px;
   background-color: rgb(229, 229, 229, 0.9);
   border-radius: 5px;
   box-shadow: 1vh 2vh 5vh rgb(105, 105, 105);
