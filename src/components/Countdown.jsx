@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const Countdown = ({ date }) => {
-  const [countdownDate, setCountdownDate] = useState(new Date(date).getTime());
+  const [countdownDate, setCountdownDate] = useState();
   const [state, setState] = useState({
     days: 0,
     hours: 0,
@@ -18,9 +18,9 @@ const Countdown = ({ date }) => {
  
   const setNewTime = () => {
     if (countdownDate) {
-      const currentTime = new Date().getTime();
+      const currentDate = new Date().getTime() * 0.989;
 
-      const distanceToDate = countdownDate - currentTime;  // *0.981 = CHANGEMENT DE DATE POUR LE TEST
+      const distanceToDate = countdownDate - currentDate;
 
       let days = Math.floor(distanceToDate / (1000 * 60 * 60 * 24));
       let hours = Math.floor(

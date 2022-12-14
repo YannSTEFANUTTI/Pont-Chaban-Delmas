@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-const CountdownTitle = ({ date, allDatesAfterCurrentDay }) => {
-  const [countdownDate, setCountdownDate] = useState(new Date().getTime());
+const CountdownTitle = ({ allDatesOnce }) => {
+  const [countdownDate, setCountdownDate] = useState();
   const [state, setState] = useState({
     days: 0,
     hours: 0,
@@ -9,29 +9,22 @@ const CountdownTitle = ({ date, allDatesAfterCurrentDay }) => {
     seconds: 0,
   });
 
-
+  useEffect(() => {
+    setCountdownDate(new Date(allDatesOnce[0]).getTime());
+  }, [allDatesOnce]);
 
   useEffect(() => {
     setInterval(() => setNewTime(), 1000);
-  }, []);
-
-useEffect(() => {
-  setCountdownDate(Number(new Date(allDatesAfterCurrentDay[0]).getTime()))
-}, [allDatesAfterCurrentDay]);
-
-
-/*   useEffect(
-    () => setCountdownDate(Number(new Date(allDatesAfterCurrentDay[0]).getTime()),
-    [allDatesAfterCurrentDay[0]])
-  ); */
-  
-  const closestDate = Number(new Date(allDatesAfterCurrentDay[0]));
-  console.log(countdownDate);
+  }, [countdownDate]);
 
   const setNewTime = () => {
     if (countdownDate) {
-      const currentTime = new Date().getTime();
-      const distanceToDate = countdownDate - currentTime;
+      const currentDate = new Date().getTime()*0.989;
+      console.log("CLOSEST", Number(countdownDate));
+      console.log("CURRENT", currentDate);
+      console.log("RESULTAT", Number(countdownDate) - currentDate);
+
+      const distanceToDate = countdownDate - currentDate;
 
       let days = Math.floor(distanceToDate / (1000 * 60 * 60 * 24));
       let hours = Math.floor(
@@ -40,6 +33,7 @@ useEffect(() => {
       let minutes = Math.floor(
         (distanceToDate % (1000 * 60 * 60)) / (1000 * 60)
       );
+
       let seconds = Math.floor((distanceToDate % (1000 * 60)) / 1000);
 
       const numbersToAddZeroTo = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -56,7 +50,6 @@ useEffect(() => {
       setState({ days: days, hours: hours, minutes, seconds });
     }
   };
-
   return (
     <div>
       <div className="countdown-wrapper">

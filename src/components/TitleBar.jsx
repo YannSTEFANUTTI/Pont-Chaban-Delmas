@@ -11,7 +11,7 @@ const TitleBar = ({
 }) => {
   const [datas, setDatas] = useState([]);
   const apiURL =
-    "https://opendata.bordeaux-metropole.fr/api/records/1.0/search/?dataset=previsions_pont_chaban&q=&rows=10000&sort=date_passage";
+    "https://opendata.bordeaux-metropole.fr/api/records/1.0/search/?dataset=previsions_pont_chaban&q=&rows=10000&sort-=date_passage";
 
   useEffect(() => {
     const url = `${apiURL}`;
@@ -37,9 +37,6 @@ const TitleBar = ({
 
   return (
     <div className="titleBar">
-      {/*  <div className="logos">
-        <img src="src/assets/img/logo03.png" alt="Github" />
-      </div> */}
       <a
         href="src/assets/img/YannStefanutti.pdf"
         target="_blank"
@@ -49,8 +46,8 @@ const TitleBar = ({
         <p>Dates de fermetures</p>
       </a>
       <CountdownTitle
-        setSelectDate={setSelectDate}
         allDatesAfterCurrentDay={allDatesAfterCurrentDay}
+        allDatesOnce={allDatesOnce}
       />
       <form id="formFilter">
         <label>

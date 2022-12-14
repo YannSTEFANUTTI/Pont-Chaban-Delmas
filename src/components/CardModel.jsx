@@ -14,7 +14,7 @@ const CardModel = ({ id, date, openHour, closeHour, reason, dateFormated }) => {
       </h4>
       <p>{`Fermeture : ${closeHour}`}</p>
       <p id="ouverture">{`Ouverture : ${openHour}`}</p>
-    {/*   <Countdown date={date}  /> */}
+      {/* <Countdown date={date}  /> */}
     </div>
   );
 };

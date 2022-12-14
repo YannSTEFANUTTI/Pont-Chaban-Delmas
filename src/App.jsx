@@ -24,9 +24,7 @@ function App() {
     currentDate.getMonth()-5
   }-${currentDate.getDate()}`;
 
-/*   const time = new Date().getTime() ;
-  console.log("time = " + time);
- */
+
   useEffect(() => {
     if (datas) {
       setAllDatesAfterCurrentDay(
