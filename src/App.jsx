@@ -19,11 +19,12 @@ function App() {
     });
   }, []);
 
-  const currentDate = new Date();
-  const dateFormated = `${currentDate.getFullYear()}-0${
-    currentDate.getMonth()-5
-  }-${currentDate.getDate()}`;
-
+  const dateToFormat = new Date().toISOString().slice(0, 10).split("");
+  dateToFormat[5] = "0";
+  dateToFormat[6] = "5";
+  dateToFormat[8] = "1";
+  dateToFormat[9] = "3";
+  const dateFormated = dateToFormat.join("");
 
   useEffect(() => {
     if (datas) {
@@ -34,7 +35,6 @@ function App() {
       );
     }
   }, [datas]);
-
 
   return (
     <div className="App">
