@@ -8,18 +8,19 @@ const CountdownTitle = ({ allDatesOnce }) => {
     minutes: 0,
     seconds: 0,
   });
-  function epoch(date) {
-    return Date.parse(date);
-  }
 
-  const dateToFormat = new Date().toISOString().slice(0, 10).split("");
+  /* function epoch(date) {
+    return Date.parse(date);
+  } */
+
+  /* const dateToFormat = new Date().toISOString().slice(0, 10).split("");
   dateToFormat[5] = "0";
   dateToFormat[6] = "5";
   dateToFormat[8] = "1";
   dateToFormat[9] = "3";
 
   const dateFormated = dateToFormat.join("");
-  const timestamp = epoch(dateFormated);
+  const timestamp = epoch(dateFormated); */
 
   useEffect(() => {
     setCountdownDate(new Date(allDatesOnce[0]).getTime());
@@ -62,7 +63,8 @@ const CountdownTitle = ({ allDatesOnce }) => {
   };
   return (
     <div>
-      <div className="countdown-wrapper">
+      <h4 className="font-bold" >Prochaine fermeture dans</h4>
+      <div className="countdown-wrapper font-bold">
         <div className="time-section">
           <div className="time">{state.days || "0"}</div>
           <small className="time-text">Jours</small>

@@ -36,36 +36,41 @@ const TitleBar = ({
   const allDatesOnce = Array.from(new Set(allDates));
 
   return (
-    <div className="titleBar">
+    <div className="titleBar z-20 w-auto h-auto bg-stone-100/[.85] rounded-b-3xl shadow-xl shadow-gray-600 flex items-center flex-col">
       <a
         href="src/assets/img/YannStefanutti.pdf"
         target="_blank"
         rel="noreferrer"
       >
-        <h1>Pont Chaban Delmas</h1>
+        <h1 className="text-3xl font-bold">Pont Chaban Delmas</h1>
         <p>Dates de fermetures</p>
       </a>
-      <CountdownTitle
-        allDatesAfterCurrentDay={allDatesAfterCurrentDay}
-        allDatesOnce={allDatesOnce}
-      />
+      <CountdownTitle allDatesOnce={allDatesOnce} />
       <form id="formFilter">
         <label>
           Filtrer par Bateau ou événement <br />
-          <select onChange={reasonSelection}>
+          <select className="font-bold" onChange={reasonSelection}>
             <option value="">---</option>
             {datas &&
-              allReasonsOnce.map((el) => <option value={el}>{el}</option>)}
+              allReasonsOnce.map((el) => (
+                <option className="font-bold" value={el}>
+                  {el}
+                </option>
+              ))}
           </select>
         </label>
       </form>
       <form id="formFilter">
-        <label>
+        <label className="pb-3">
           Filtrer par date <br />
-          <select onChange={DateSelection}>
+          <select className="font-bold" onChange={DateSelection}>
             <option value="">---</option>
             {datas &&
-              allDatesOnce.map((el) => <option value={el}>{el}</option>)}
+              allDatesOnce.map((el) => (
+                <option className="font-bold" value={el}>
+                  {el}
+                </option>
+              ))}
           </select>
         </label>
       </form>

@@ -22,8 +22,8 @@ function App() {
   const dateToFormat = new Date().toISOString().slice(0, 10).split("");
   dateToFormat[5] = "0";
   dateToFormat[6] = "5";
-  dateToFormat[8] = "1";
-  dateToFormat[9] = "3";
+  /*   dateToFormat[8] = "1";
+  dateToFormat[9] = "3"; */
   const dateFormated = dateToFormat.join("");
 
   useEffect(() => {
@@ -36,14 +36,15 @@ function App() {
     }
   }, [datas]);
 
+  console.log(allDatesAfterCurrentDay);
   return (
-    <div className="App">
+    <div className="App flex items-center flex-col bg-cover bg-fixed">
       <TitleBar
         setSelectReason={setSelectReason}
         setSelectDate={setSelectDate}
         allDatesAfterCurrentDay={allDatesAfterCurrentDay}
       />
-      <div className="allCards">
+      <div className="allCards z-[2]">
         {datas &&
           datas.records
             .filter((el) => el.fields.date_passage >= dateFormated)
@@ -53,17 +54,15 @@ function App() {
             )
             .map((el) => (
               <CardModel
-                id={el.recordid}
                 reason={el.fields.bateau}
                 date={el.fields.date_passage}
                 openHour={el.fields.re_ouverture_a_la_circulation}
                 closeHour={el.fields.fermeture_a_la_circulation}
                 selectDate={selectDate}
-                dateFormated={dateFormated}
               />
             ))}
       </div>
-      <div className="colorsBG"></div>
+      <div className="colorsBG fixed z-[0] h-full w-full opacity-20 bg-[size:300%_300%] "></div>
     </div>
   );
 }
