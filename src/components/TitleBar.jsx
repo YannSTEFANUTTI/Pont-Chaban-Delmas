@@ -1,15 +1,17 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import CountdownTitle from './CountdownTitle';
-
+import PropTypes from "prop-types";
+/* import { useState, useEffect } from "react";
+import axios from "axios"; */
+import CountdownTitle from "./CountdownTitle";
+import data from "../assets/data";
 
 const TitleBar = ({
   setSelectReason,
   setSelectDate,
   allDatesAfterCurrentDay,
 }) => {
-  const [datas, setDatas] = useState([]);
+  //APPEL D'API NON ACTIVE (Les dates sont modifiées directement dans "data")
+  /*   const [datas, setDatas] = useState([]);
   const apiURL =
     "https://opendata.bordeaux-metropole.fr/api/records/1.0/search/?dataset=previsions_pont_chaban&q=&rows=10000&sort-=date_passage";
 
@@ -18,7 +20,7 @@ const TitleBar = ({
     axios.get(url).then((response) => {
       setDatas(response.data.records);
     });
-  }, []);
+  }, []); */
 
   const reasonSelection = (e) => {
     setSelectReason(e.target.value);
@@ -26,13 +28,11 @@ const TitleBar = ({
   const DateSelection = (e) => {
     setSelectDate(e.target.value);
   };
-  const allReasons = datas.map((el) => el.fields.bateau).sort();
+
+  const allReasons = data[0].records.map((el) => el.fields.bateau).sort();
   const allReasonsOnce = Array.from(new Set(allReasons));
 
-  const allDates = allDatesAfterCurrentDay
-    .map((el) => el)
-    .sort();
-    
+  const allDates = allDatesAfterCurrentDay.map((el) => el);
   const allDatesOnce = Array.from(new Set(allDates));
 
   return (
@@ -51,9 +51,9 @@ const TitleBar = ({
           Filtrer par Bateau ou événement <br />
           <select className="font-bold" onChange={reasonSelection}>
             <option value="">---</option>
-            {datas &&
+            {data[0] &&
               allReasonsOnce.map((el) => (
-                <option className="font-bold" value={el}>
+                <option key={el} className="font-bold" value={el}>
                   {el}
                 </option>
               ))}
@@ -65,9 +65,9 @@ const TitleBar = ({
           Filtrer par date <br />
           <select className="font-bold" onChange={DateSelection}>
             <option value="">---</option>
-            {datas &&
+            {data[0] &&
               allDatesOnce.map((el) => (
-                <option className="font-bold" value={el}>
+                <option key={el} className="font-bold" value={el}>
                   {el}
                 </option>
               ))}
@@ -78,4 +78,7 @@ const TitleBar = ({
   );
 };
 
+TitleBar.propTypes = {
+  allDatesAfterCurrentDay: PropTypes.array.isRequired,
+};
 export default TitleBar;

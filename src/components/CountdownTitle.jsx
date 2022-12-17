@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const CountdownTitle = ({ allDatesOnce }) => {
   const [countdownDate, setCountdownDate] = useState();
@@ -8,19 +9,6 @@ const CountdownTitle = ({ allDatesOnce }) => {
     minutes: 0,
     seconds: 0,
   });
-
-  /* function epoch(date) {
-    return Date.parse(date);
-  } */
-
-  /* const dateToFormat = new Date().toISOString().slice(0, 10).split("");
-  dateToFormat[5] = "0";
-  dateToFormat[6] = "5";
-  dateToFormat[8] = "1";
-  dateToFormat[9] = "3";
-
-  const dateFormated = dateToFormat.join("");
-  const timestamp = epoch(dateFormated); */
 
   useEffect(() => {
     setCountdownDate(new Date(allDatesOnce[0]).getTime());
@@ -32,9 +20,7 @@ const CountdownTitle = ({ allDatesOnce }) => {
 
   const setNewTime = () => {
     if (countdownDate) {
-      const currentDate = new Date().getTime() * 0.9888344;
-      /*     currentDate = currentDate.getTime();
-      console.log(currentDate); */
+      const currentDate = new Date().getTime();
       const distanceToDate = countdownDate - currentDate;
 
       let days = Math.floor(distanceToDate / (1000 * 60 * 60 * 24));
@@ -63,7 +49,7 @@ const CountdownTitle = ({ allDatesOnce }) => {
   };
   return (
     <div>
-      <h4 className="font-bold" >Prochaine fermeture dans</h4>
+      <h4 className="font-bold">Prochaine fermeture dans</h4>
       <div className="countdown-wrapper font-bold">
         <div className="time-section">
           <div className="time">{state.days || "0"}</div>
@@ -93,6 +79,10 @@ const CountdownTitle = ({ allDatesOnce }) => {
       </div>
     </div>
   );
+};
+
+CountdownTitle.propTypes = {
+  allDatesOnce: PropTypes.array.isRequired,
 };
 
 export default CountdownTitle;

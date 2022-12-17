@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import CardModel from "./components/CardModel";
 import TitleBar from "./components/TitleBar";
+import data from "./assets/data";
 
 function App() {
   const [selectReason, setSelectReason] = useState("");
@@ -10,7 +11,7 @@ function App() {
   const [datas, setDatas] = useState();
   const [allDatesAfterCurrentDay, setAllDatesAfterCurrentDay] = useState([]);
   const apiURL =
-    "https://opendata.bordeaux-metropole.fr/api/records/1.0/search/?dataset=previsions_pont_chaban&q=&rows=10000&sort-=date_passage";
+    "https://opendata.bordeaux-metropole.fr/api/records/1.0/search/?dataset=previsions_pont_chaban&q=&rows=10000&sort";
 
   useEffect(() => {
     const url = `${apiURL}`;
@@ -20,23 +21,23 @@ function App() {
   }, []);
 
   const dateToFormat = new Date().toISOString().slice(0, 10).split("");
+
   dateToFormat[5] = "0";
   dateToFormat[6] = "5";
-  /*   dateToFormat[8] = "1";
-  dateToFormat[9] = "3"; */
+  dateToFormat[8] = "1";
+  dateToFormat[9] = "3";
   const dateFormated = dateToFormat.join("");
 
   useEffect(() => {
-    if (datas) {
+    if (data[0]) {
       setAllDatesAfterCurrentDay(
-        datas.records
+        data[0].records
           .map((el) => el.fields.date_passage)
           .filter((el) => el >= dateFormated)
       );
     }
-  }, [datas]);
+  }, [data[0]]);
 
-  console.log(allDatesAfterCurrentDay);
   return (
     <div className="App flex items-center flex-col bg-cover bg-fixed">
       <TitleBar
@@ -45,8 +46,9 @@ function App() {
         allDatesAfterCurrentDay={allDatesAfterCurrentDay}
       />
       <div className="allCards z-[2]">
-        {datas &&
-          datas.records
+        {data[0] &&
+          data[0].records
+            /* .sort((objA, objB) => Number(objB.date) - Number(objA.date)) */
             .filter((el) => el.fields.date_passage >= dateFormated)
             .filter((el) => !selectReason || el.fields.bateau === selectReason)
             .filter(
@@ -54,11 +56,11 @@ function App() {
             )
             .map((el) => (
               <CardModel
+                key={el.recordid}
                 reason={el.fields.bateau}
                 date={el.fields.date_passage}
                 openHour={el.fields.re_ouverture_a_la_circulation}
                 closeHour={el.fields.fermeture_a_la_circulation}
-                selectDate={selectDate}
               />
             ))}
       </div>

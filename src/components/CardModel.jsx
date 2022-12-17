@@ -1,5 +1,5 @@
 import React from "react";
-/* import Countdown from "./Countdown"; */
+import PropTypes from "prop-types";
 
 const CardModel = ({ date, openHour, closeHour, reason,}) => {
   return (
@@ -17,9 +17,17 @@ const CardModel = ({ date, openHour, closeHour, reason,}) => {
       </h4>
       <p>{`Fermeture : ${closeHour}`}</p>
       <p id="ouverture">{`Ouverture : ${openHour}`}</p>
-      {/* <Countdown date={date}  /> */}
+
     </div>
   );
+};
+
+
+CardModel.propTypes = {
+  date: PropTypes.string.isRequired,
+  openHour: PropTypes.string.isRequired,
+  closeHour: PropTypes.string.isRequired,
+  reason: PropTypes.string.isRequired,
 };
 
 export default CardModel;
