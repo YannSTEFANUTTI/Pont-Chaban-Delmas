@@ -36,8 +36,9 @@ const TitleBar = ({
   const allDatesOnce = Array.from(new Set(allDates));
 
   return (
-    <div className="titleBar z-20 w-auto h-auto bg-stone-100/[.85] rounded-b-3xl shadow-xl shadow-gray-600 flex items-center flex-col">
+    <div className="titleBar z-20 w-auto h-auto bg-stone-100/[.85] rounded-b-3xl shadow-xl shadow-gray-600 flex items-center flex-col ">
       <a
+        className="visited:text-[#323232] hover:text-[#860505] hover:scale-110 active:text-[#323232] "
         href="src/assets/img/YannStefanutti.pdf"
         target="_blank"
         rel="noreferrer"
@@ -49,7 +50,7 @@ const TitleBar = ({
       <form id="formFilter">
         <label>
           Filtrer par Bateau ou événement <br />
-          <select className="font-bold" onChange={reasonSelection}>
+          <select className="text-[0.8rem] text-center font-bold" onChange={reasonSelection}>
             <option value="">---</option>
             {data[0] &&
               allReasonsOnce.map((el) => (

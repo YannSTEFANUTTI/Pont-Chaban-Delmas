@@ -13,16 +13,12 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   background-image: url(./assets/img/photoBG.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
 
 .colorsBG {
-
   background-image: linear-gradient(
     -45deg,
     rgb(9, 1, 242) 0%,
@@ -49,45 +45,12 @@ body {
   background-image: url(./assets/img/photoBG.jpg);
 }
 
-#fullCard {
-  scale: 1;
-  rotate: 0deg;
-  width: 30vw;
- }
-
 #cardDate {
-  font-size: 110%;
-  color: rgb(128, 3, 3);
-  margin: 0;
-  padding-top: 5%;
   font-family: gothicb, "Roboto", "sans-serif";
-  text-align: left;
-  letter-spacing: -0.07vw;
 }
 
 #fullCard h4 {
-  font-size: 100%;
-  color: rgb(50, 50, 50);
-  margin: 0;
-  margin-top: 2%;
   font-family: gothicb, "Roboto", "sans-serif";
-  text-align: left;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
-#fullCard p {
-  font-size: 100%;
-  margin: 0;
-  padding-left: 10%;
-  padding-right: 10%;
-  text-align: left;
-  line-height: normal;
-  height: 100%;
-}
-
-#ouverture {
-  padding-bottom: 5%;
 }
 
 /*-------------------COUNTER---------------------*/
@@ -119,7 +82,6 @@ body {
 
 /*--------------------------TITLEBAR-------------------------*/
 
-
 .titleBar h1 {
   display: flex;
   flex-direction: column;
@@ -148,33 +110,6 @@ body {
   margin-top: 5%;
 }
 
-.logos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.titleBar a:link {
-  text-decoration: none;
-  color: rgb(50, 50, 50);
-}
-
-.titleBar a:visited {
-  text-decoration: none;
-  color: rgb(50, 50, 50);
-}
-
-.titleBar a:hover {
-  text-decoration: none;
-  color: rgb(134, 5, 5);
-  scale: 1.1;
-}
-
-.titleBar a:active {
-  text-decoration: none;
-  color: rgb(50, 50, 50);
-}
-
 #formFilter {
   display: flex;
   flex-direction: column;
@@ -186,7 +121,3 @@ body {
   padding-right: 3vh;
 }
 
-#formFilter select {
-  font-size: 0.8rem;
-  text-align: center;
-}
