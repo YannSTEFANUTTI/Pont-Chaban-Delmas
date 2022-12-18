@@ -45,7 +45,7 @@ const TitleBar = ({
       >
         <h1 className="text-2xl font-bold m-0 mt-[1.5vh]">Pont Chaban Delmas</h1>
         <p className="text-[100%] mt-0 mb-[5%] text-[#800303] text-center">
-          Dates de fermetures
+          Dates de fermeture
         </p>
       </a>
       <CountdownTimer allDatesOnce={allDatesOnce} />
