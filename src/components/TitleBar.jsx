@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 /* import { useState, useEffect } from "react";
 import axios from "axios"; */
-import CountdownTitle from "./CountdownTitle";
+import CountdownTimer from "./CountdownTimer";
 import data from "../assets/data";
 
 const TitleBar = ({
@@ -43,14 +43,22 @@ const TitleBar = ({
         target="_blank"
         rel="noreferrer"
       >
-        <h1 className="text-3xl font-bold">Pont Chaban Delmas</h1>
-        <p>Dates de fermetures</p>
+        <h1 className="text-2xl font-bold m-0 mt-[1.5vh]">Pont Chaban Delmas</h1>
+        <p className="text-[100%] mt-0 mb-[5%] text-[#800303] text-center">
+          Dates de fermetures
+        </p>
       </a>
-      <CountdownTitle allDatesOnce={allDatesOnce} />
-      <form id="formFilter">
+      <CountdownTimer allDatesOnce={allDatesOnce} />
+      <form
+        id="formFilter"
+        className="flex flex-col items-center content-center text-center w-[100%] px-[3vh] "
+      >
         <label>
           Filtrer par Bateau ou événement <br />
-          <select className="text-[0.8rem] text-center font-bold" onChange={reasonSelection}>
+          <select
+            className="text-[0.8rem] text-center font-bold"
+            onChange={reasonSelection}
+          >
             <option value="">---</option>
             {data[0] &&
               allReasonsOnce.map((el) => (
@@ -61,7 +69,7 @@ const TitleBar = ({
           </select>
         </label>
       </form>
-      <form id="formFilter">
+      <form className="flex">
         <label className="pb-3">
           Filtrer par date <br />
           <select className="font-bold" onChange={DateSelection}>

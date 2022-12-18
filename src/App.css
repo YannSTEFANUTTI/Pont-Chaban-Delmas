@@ -53,71 +53,8 @@ body {
   font-family: gothicb, "Roboto", "sans-serif";
 }
 
-/*-------------------COUNTER---------------------*/
-
-.countdown-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 0 -8px 0 -8px;
-}
-
-.time-section {
-  padding: 0.2vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  color: #343434;
-}
-
-.time {
-  margin: 0;
-  font-size: 100%;
-  font-weight: 800;
-}
-
-.time-text {
-  font-size: 70%;
-}
-
 /*--------------------------TITLEBAR-------------------------*/
 
-.titleBar h1 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: 1.5rem;
-  margin: 0;
-  margin-top: 1.5vh;
-}
-
 .titleBar p {
-  font-size: 100%;
-  margin-top: 0;
-  margin-bottom: 5%;
-  color: rgb(128, 3, 3);
   font-family: gothicb, "Roboto", "sans-serif";
-  text-align: center;
 }
-
-.titleBar h4 {
-  text-align: center;
-}
-
-.titleBar img {
-  width: 15%;
-  margin-top: 5%;
-}
-
-#formFilter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  padding-left: 3vh;
-  padding-right: 3vh;
-}
-

@@ -20,13 +20,10 @@ function App() {
     });
   }, []);
 
-  const dateToFormat = new Date().toISOString().slice(0, 10).split("");
+  const dateFormated = new Date().toISOString();
+console.log(dateFormated);
 
-  dateToFormat[5] = "0";
-  dateToFormat[6] = "5";
-  dateToFormat[8] = "1";
-  dateToFormat[9] = "3";
-  const dateFormated = dateToFormat.join("");
+
 
   useEffect(() => {
     if (data[0]) {
@@ -48,7 +45,6 @@ function App() {
       <div className="allCards z-[2]">
         {data[0] &&
           data[0].records
-            /* .sort((objA, objB) => Number(objB.date) - Number(objA.date)) */
             .filter((el) => el.fields.date_passage >= dateFormated)
             .filter((el) => !selectReason || el.fields.bateau === selectReason)
             .filter(
