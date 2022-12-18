@@ -10,7 +10,7 @@ const Search = ({ search, setSearch }) => {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
-      <span>Filtre par Bateau / Evenement</span>
+      <span>Filtre par Bateau / Eveneme{/*  */}nt</span>
     </div>
   );
 };

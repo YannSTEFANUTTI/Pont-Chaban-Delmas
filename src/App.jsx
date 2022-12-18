@@ -21,9 +21,6 @@ function App() {
   }, []);
 
   const dateFormated = new Date().toISOString();
-console.log(dateFormated);
-
-
 
   useEffect(() => {
     if (data[0]) {

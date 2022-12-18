@@ -31,15 +31,23 @@ const CountdownTimer = ({ allDatesOnce }) => {
             <small className="text-[70%]">Jours</small>
           </div>
           <div className="p-[.2vw] flex flex-col content-start items-center text-[#343434]">
-            <div className="m-0 text-[100%] font-extrabold "> {hours || "-"}</div>
+            <div className="m-0 text-[100%] font-extrabold ">
+              {" "}
+              {hours || "-"}
+            </div>
             <small className="text-[70%]">Heures</small>
           </div>
           <div className="p-[.2vw] flex flex-col content-start items-center text-[#343434]">
-            <div className="m-0 text-[100%] font-extrabold "> {minutes || "-"}</div>
+            <div className="m-0 text-[100%] font-extrabold ">
+              {" "}
+              {minutes || "-"}
+            </div>
             <small className="text-[70%]">minutes</small>
           </div>
           <div className="p-[.2vw] flex flex-col content-start items-center text-[#343434]">
-            <div className="m-0 text-[100%] font-extrabold ">{seconds || "-"}</div>
+            <div className="m-0 text-[100%] font-extrabold ">
+              {seconds || "-"}
+            </div>
             <small className="text-[70%]">secondes</small>
           </div>
         </div>

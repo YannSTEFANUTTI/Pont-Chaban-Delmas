@@ -7,7 +7,7 @@ import data from "../assets/data";
 
 const TitleBar = ({
   setSelectReason,
-  setSelectDate,
+  setSelectDate,/*  */
   allDatesAfterCurrentDay,
 }) => {
   //APPEL D'API NON ACTIVE (Les dates sont modifiées directement dans "data")

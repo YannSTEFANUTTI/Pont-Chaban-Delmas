@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CardModel = ({ date, openHour, closeHour, reason,}) => {
+const CardModel = ({ date, openHour, closeHour, reason }) => {
   return (
     <div
       id="fullCard"
@@ -23,7 +23,6 @@ const CardModel = ({ date, openHour, closeHour, reason,}) => {
     </div>
   );
 };
-
 
 CardModel.propTypes = {
   date: PropTypes.string.isRequired,
