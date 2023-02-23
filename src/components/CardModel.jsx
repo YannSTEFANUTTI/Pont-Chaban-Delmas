@@ -5,13 +5,13 @@ const CardModel = ({ date, openHour, closeHour, reason }) => {
   return (
     <div
       id="fullCard"
-      className="mt-3 mb-2 h-auto bg-stone-100/[.85] rounded-2xl shadow-xl shadow-gray-700 min-w-[400px] w-[30vw]"
+      className="flex flex-col items-center mt-5 mb-2 h-auto bg-stone-100/[.85] rounded-xl shadow-xl shadow-gray-700 min-w-[400px] w-auto]"
     >
       <h5
         id="cardDate"
-        className=" text-[#800303] text-[110%] m-0 pt-5 text-left tracking-[-.07vw] "
+        className=" text-[#800303] text-[110%] m-0 pt-5 text-center  "
       >
-        &ensp;&ensp;&ensp; {`__________ ${date} __________`}
+        {`__________ ${date} __________`}
       </h5>
       <h4 className="text-[#323232] text-[100%] m-0 text-left px-[10%] mt-[2%]">
         {reason == "MAINTENANCE"
