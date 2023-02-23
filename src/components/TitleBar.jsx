@@ -1,26 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-/* import { useState, useEffect } from "react";
-import axios from "axios"; */
+import { useState, useEffect } from "react";
+import axios from "axios";
 import CountdownTimer from "./CountdownTimer";
-import data from "../assets/data";
 
 const TitleBar = ({
   setSelectReason,
-  setSelectDate,/*  */
+  setSelectDate,
   allDatesAfterCurrentDay,
 }) => {
-  //APPEL D'API NON ACTIVE (Les dates sont modifiées directement dans "data")
-  /*   const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState();
   const apiURL =
-    "https://opendata.bordeaux-metropole.fr/api/records/1.0/search/?dataset=previsions_pont_chaban&q=&rows=10000&sort-=date_passage";
+    "https://opendata.bordeaux-metropole.fr/api/records/1.0/search/?dataset=previsions_pont_chaban&q=&rows=10000&sort";
 
   useEffect(() => {
     const url = `${apiURL}`;
     axios.get(url).then((response) => {
-      setDatas(response.data.records);
+      setDatas(response.data);
     });
-  }, []); */
+  }, []);
 
   const reasonSelection = (e) => {
     setSelectReason(e.target.value);
@@ -29,7 +27,7 @@ const TitleBar = ({
     setSelectDate(e.target.value);
   };
 
-  const allReasons = data[0].records.map((el) => el.fields.bateau).sort();
+  const allReasons = datas && datas.records.map((el) => el.fields.bateau).sort();
   const allReasonsOnce = Array.from(new Set(allReasons));
 
   const allDates = allDatesAfterCurrentDay.map((el) => el);
@@ -60,7 +58,7 @@ const TitleBar = ({
             onChange={reasonSelection}
           >
             <option value="">---</option>
-            {data[0] &&
+            {datas &&
               allReasonsOnce.map((el) => (
                 <option key={el} className="font-bold" value={el}>
                   {el}
@@ -74,7 +72,7 @@ const TitleBar = ({
           Filtrer par date <br />
           <select className="font-bold" onChange={DateSelection}>
             <option value="">---</option>
-            {data[0] &&
+            {datas &&
               allDatesOnce.map((el) => (
                 <option key={el} className="font-bold" value={el}>
                   {el}

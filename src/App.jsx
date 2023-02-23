@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import CardModel from "./components/CardModel";
 import TitleBar from "./components/TitleBar";
-import data from "./assets/data";
 
 function App() {
   const [selectReason, setSelectReason] = useState("");
@@ -20,17 +19,18 @@ function App() {
     });
   }, []);
 
+
   const dateFormated = new Date().toISOString();
 
   useEffect(() => {
-    if (data[0]) {
+    if (datas) {
       setAllDatesAfterCurrentDay(
-        data[0].records
+        datas.records
           .map((el) => el.fields.date_passage)
           .filter((el) => el >= dateFormated)
       );
     }
-  }, [data[0]]);
+  }, [datas]);
 
   return (
     <div className="App flex items-center flex-col bg-cover bg-fixed">
@@ -40,8 +40,8 @@ function App() {
         allDatesAfterCurrentDay={allDatesAfterCurrentDay}
       />
       <div className="allCards z-[2]">
-        {data[0] &&
-          data[0].records
+        {datas &&
+          datas.records
             .filter((el) => el.fields.date_passage >= dateFormated)
             .filter((el) => !selectReason || el.fields.bateau === selectReason)
             .filter(

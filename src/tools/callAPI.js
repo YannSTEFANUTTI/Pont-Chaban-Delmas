@@ -11,6 +11,7 @@ const CallAPI = () => {
       setDatas(response.data);
     });
   }, []);
+  console.warn(datas);
 };
 
 export default CallAPI;
